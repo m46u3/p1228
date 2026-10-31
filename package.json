@@ -1,0 +1,38 @@
+{
+  "name": "p1228",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Multi-bot Discord application suite migrated to Node.js and JavaScript",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "start:community": "node src/p1228/bots/community/index.js",
+    "start:tts": "node src/p1228/bots/tts/index.js",
+    "start:minase": "node src/p1228/bots/minase/index.js",
+    "start:ai": "node src/p1228/bots/ai/index.js",
+    "start:music": "node src/p1228/bots/music/index.js",
+    "start:entertainment": "node src/p1228/bots/entertainment/index.js",
+    "start:debug": "node src/p1228/bots/debug/index.js",
+    "format": "prettier --write \"src/**/*.js\" \"tests/**/*.js\"",
+    "format:check": "prettier --check \"src/**/*.js\" \"tests/**/*.js\"",
+    "test": "node --test",
+    "check": "node --check src/index.js && node --check src/p1228/bots/ai/index.js && node --check src/p1228/bots/community/index.js && node --check src/p1228/bots/debug/index.js && node --check src/p1228/bots/entertainment/index.js && node --check src/p1228/bots/minase/index.js && node --check src/p1228/bots/music/index.js && node --check src/p1228/bots/tts/index.js && node --check src/p1228/core/config.js && node --check src/p1228/core/economy.js && node --check src/p1228/core/logging.js && node --check src/p1228/core/runtime.js && node --check src/p1228/core/security.js"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "@discordjs/opus": "^0.10.0",
+    "@discordjs/voice": "^0.18.0",
+    "better-sqlite3": "^12.11.1",
+    "discord.js": "^14.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "allowScripts": {
+    "@discordjs/opus@0.10.0": true,
+    "better-sqlite3@12.11.1": true
+  }
+}

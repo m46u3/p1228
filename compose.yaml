@@ -1,0 +1,71 @@
+name: p1228
+
+x-bot-common: &bot-common
+  profiles: ["bots"]
+  build: .
+  restart: unless-stopped
+  env_file:
+    - .env
+  environment:
+    BOT_LOG_DIR: /app/logs
+    BOT_DATA_DIR: /app/data
+    VOICEVOX_URL: ${VOICEVOX_URL:-http://host.docker.internal:50021}
+    OLLAMA_URL: ${OLLAMA_URL:-http://host.docker.internal:11434}
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  volumes:
+    - bot-logs:/app/logs
+
+services:
+  ai-bot:
+    <<: *bot-common
+    command:
+      - node
+      - src/p1228/bots/ai/index.js
+
+  community-bot:
+    <<: *bot-common
+    command:
+      - node
+      - src/p1228/bots/community/index.js
+
+  debug-bot:
+    <<: *bot-common
+    command:
+      - node
+      - src/p1228/bots/debug/index.js
+
+  entertainment-bot:
+    <<: *bot-common
+    command:
+      - node
+      - src/p1228/bots/entertainment/index.js
+    volumes:
+      - bot-logs:/app/logs
+      - entertainment-data:/app/data/entertainment
+
+  minase-bot:
+    <<: *bot-common
+    command:
+      - node
+      - src/p1228/bots/minase/index.js
+    volumes:
+      - bot-logs:/app/logs
+      - minase-data:/app/data/minase
+
+  music-bot:
+    <<: *bot-common
+    command:
+      - node
+      - src/p1228/bots/music/index.js
+
+  tts-bot:
+    <<: *bot-common
+    command:
+      - node
+      - src/p1228/bots/tts/index.js
+
+volumes:
+  bot-logs:
+  entertainment-data:
+  minase-data:

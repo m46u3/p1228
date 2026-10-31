@@ -1,0 +1,3 @@
+Copyright (c) 2026 p1228 contributors. All rights reserved.
+
+This repository is provided for private project use. Redistribution or commercial use requires permission from the copyright holder.
